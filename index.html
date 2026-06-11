@@ -205,6 +205,124 @@ footer{text-align:center;padding:24px;color:var(--muted);font-size:11px;border-t
 
 .note{background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.25);border-radius:12px;padding:14px 16px;font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:24px}
 .note b{color:var(--cyan)}
+
+/* ════════════════════════════════════════════════════════════
+   DESIGN LAYER — Editorial / Arquitetura (paleta papel-concreto,
+   serifada, linhas finas, superfícies planas, muito branco)
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --bg:#efece6; --surface:#f5f2ec; --card:#fbf9f5; --border:#d9d3c7; --line:#d9d3c7;
+  --text:#20201d; --ink:#20201d; --muted:#77736b;
+  --accent:#9c6b3f; --green:#6f7d5a; --blue:#5a7d80; --red:#9e4f42; --purple:#6a6170; --cyan:#5a7d80;
+  --swim:#5a7d80; --bike:#9c6b3f; --run:#9e4f42; --gym:#6a6170;
+  --shadow:none;
+  --serif:Georgia,'Times New Roman',Times,serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Helvetica Neue','Segoe UI',Arial,sans-serif;
+}
+body{background:var(--bg)!important;background-image:none!important;color:var(--text);font-family:var(--sans);letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+.info-box,.seg,.ex,.sci-card,.pcard,.tip,.adj,.trail-chart,.garmin-week-hdr,.wday,.hero-stats{box-shadow:none!important}
+
+/* HERO */
+.hero{background:var(--surface)!important;border:none!important;border-bottom:1px solid var(--line)!important;padding:84px 24px 60px;text-align:center}
+.hero::before,.hero::after{display:none!important}
+.race-badge{background:transparent!important;border:1px solid var(--ink)!important;border-radius:0!important;color:var(--ink)!important;font-weight:600;letter-spacing:.28em;font-size:10px;padding:7px 16px}
+.hero h1{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;font-size:clamp(40px,8vw,78px);line-height:1.02;margin-bottom:18px}
+.hero h1 em{color:var(--accent);font-style:italic}
+.hero p{font-size:15px;max-width:560px;letter-spacing:0;color:var(--muted)}
+.hero-stats{background:transparent;border:none;border-top:1px solid var(--line);border-radius:0;max-width:900px;margin-top:6px}
+.hstat{border-right:1px solid var(--line);padding:22px 12px}
+.hstat .v{font-family:var(--serif);font-weight:400;font-size:30px}
+.hstat .l{letter-spacing:.18em;font-size:9px}
+
+/* NAV */
+.nav{background:rgba(245,242,236,.92)!important;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);box-shadow:none!important}
+.nav button{font-weight:600;letter-spacing:.14em;font-size:11px;text-transform:uppercase;border-bottom:2px solid transparent;padding:16px 18px}
+.nav button.a{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* SECTION HEADERS */
+.ph{font-family:var(--serif);font-weight:400;font-size:28px;letter-spacing:-.01em}
+.ps{letter-spacing:0;color:var(--muted)}
+
+/* CARDS — planos, linha fina */
+.info-box,.seg,.ex,.sci-card,.pcard,.tip,.adj,.trail-chart{border:1px solid var(--line);border-radius:2px;background:var(--card)}
+.ex:hover{transform:translateY(-2px);box-shadow:none!important;border-color:var(--ink)}
+.ex .ehead{border-bottom:1px solid var(--line)}
+.ename{font-weight:700;letter-spacing:0}
+.info-box h3,.sci-card .sci-src,.trail-chart-title{letter-spacing:.16em}
+.pr{background:transparent;border:1px solid var(--line);border-radius:2px}
+.pr .pv{color:var(--ink)}
+.seg .sd{font-family:var(--serif);font-weight:400}
+.seg .pbar,.pcard .pbar{border-radius:0;height:3px}
+.cl-chip{background:transparent;border:1px solid var(--line);border-radius:2px}
+.cl-chip .cv{font-family:var(--serif);color:var(--ink)}
+
+/* cue / why */
+.cue{background:transparent;border-left:2px solid var(--accent);border-radius:0;color:var(--muted)}
+.cue strong{color:var(--ink)}
+.why .em{color:var(--accent)}
+
+/* SEQ */
+.seq{background:var(--surface)!important;border:1px solid var(--line);border-radius:2px;box-shadow:none}
+.seq h4{font-family:var(--serif);font-weight:400;font-size:17px}
+
+/* TABLE */
+.ptable th{background:transparent;letter-spacing:.14em;border-bottom:1px solid var(--ink)}
+.ptable td{border-bottom:1px solid var(--line)}
+.ptable tr:hover td{background:rgba(32,32,29,.03)}
+.rpe{border-radius:2px;font-weight:700;letter-spacing:.04em}
+.rpe.low{background:rgba(111,125,90,.16);color:var(--green)}
+.rpe.mid{background:rgba(156,107,63,.16);color:var(--accent)}
+.rpe.hi{background:rgba(158,79,66,.16);color:var(--run)}
+
+/* PHASE CARDS */
+.pcard h3{font-family:var(--serif);font-weight:400;font-size:18px}
+.pcard .pw{letter-spacing:.14em}
+.pcard ul li::before{color:var(--accent)}
+
+/* WEEK TEMPLATE */
+.wday{border:1px solid var(--line);border-radius:2px;background:var(--card)}
+.wday .wn{letter-spacing:.18em}
+
+/* DAY HEADER */
+.day-hdr h2{font-family:var(--serif);font-weight:400}
+.day-badge{background:rgba(32,32,29,.05)!important;border:1px solid var(--line);border-radius:2px;letter-spacing:.06em}
+
+/* GARMIN WEEK */
+.garmin-week-hdr{border:1px solid var(--line);border-radius:2px;background:var(--card)}
+.garmin-week-badge,.garmin-week-alert{background:rgba(32,32,29,.05)!important;border:1px solid var(--line);border-radius:2px;letter-spacing:.08em}
+.garmin-week-title{font-weight:700}
+.gday{border:1px solid var(--line);border-radius:2px;background:var(--card)}
+.gday .gdn{letter-spacing:.14em}
+.gday.swim{background:rgba(90,125,128,.07);border-color:rgba(90,125,128,.4)}
+.gday.bike{background:rgba(156,107,63,.07);border-color:rgba(156,107,63,.4)}
+.gday.run{background:rgba(158,79,66,.07);border-color:rgba(158,79,66,.4)}
+.gday.brick{background:rgba(111,125,90,.08);border-color:rgba(111,125,90,.45)}
+.gday.brick .gdn,.gday.brick .grun{color:var(--green)}
+.gday.rest{opacity:.5}
+.gday.done{box-shadow:inset 0 0 0 2px var(--green)!important}
+.gday.today{box-shadow:0 0 0 2px var(--ink)!important;border-color:var(--ink)!important}
+.gday .gdone{color:var(--green)}
+.gday .ggym{background:rgba(106,97,112,.14);color:var(--gym);border-radius:2px}
+
+/* VOLUME CHART — barras monocromáticas por fase */
+.trail-chart{border-radius:2px}
+#volBars .tbar{border:none!important;border-radius:1px!important}
+#volBars .tbar-col:nth-child(-n+5) .tbar{background:linear-gradient(180deg,var(--green),rgba(111,125,90,.18))!important}
+#volBars .tbar-col:nth-child(n+6):nth-child(-n+10) .tbar{background:linear-gradient(180deg,var(--blue),rgba(90,125,128,.18))!important}
+#volBars .tbar-col:nth-child(n+11):nth-child(-n+13) .tbar{background:linear-gradient(180deg,var(--accent),rgba(156,107,63,.18))!important}
+#volBars .tbar-col:nth-child(n+14) .tbar{background:linear-gradient(180deg,var(--run),rgba(158,79,66,.18))!important}
+#volBars .tbar-km{color:var(--muted)!important;font-family:var(--serif);font-weight:700}
+
+/* ADJ + NOTE */
+.adj{border:1px solid var(--line);border-left:2px solid var(--accent);border-radius:0;background:var(--card)}
+.adj.g{border-left-color:var(--green)} .adj.b{border-left-color:var(--blue)} .adj.r{border-left-color:var(--run)}
+.note{background:var(--surface)!important;border:1px solid var(--line)!important;border-left:2px solid var(--accent)!important;border-radius:0!important;color:var(--muted)}
+.note b{color:var(--ink)}
+
+/* ÍCONES — um pouco menores, refinados */
+.seg .si{font-size:28px} .sci-card .sci-icon{font-size:22px} .tip .ti{font-size:22px}
+
+footer{border-top:1px solid var(--line);letter-spacing:.04em}
 </style>
 </head>
 <body>
