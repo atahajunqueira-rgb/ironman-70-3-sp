@@ -346,6 +346,7 @@ footer{border-top:1px solid var(--line);letter-spacing:.04em}
   <button class="a" onclick="show('race',this)">🏁 A Prova</button>
   <button onclick="show('periodization',this)">📈 Periodização</button>
   <button onclick="show('plan',this)">🗓️ Plano Semanal</button>
+  <button onclick="show('analysis',this)">📊 Análise</button>
   <button onclick="show('swim',this)">🏊 Natação</button>
   <button onclick="show('bike',this)">🚴 Ciclismo</button>
   <button onclick="show('run',this)">🏃 Corrida</button>
@@ -606,6 +607,132 @@ footer{border-top:1px solid var(--line);letter-spacing:.04em}
     <div class="adj g"><h4>Semana fácil a cada 4ª semana</h4><p>S4, S8 e S14 reduzem volume ~25–40%. São tão importantes quanto as semanas duras — é quando o ganho consolida.</p></div>
     <div class="adj r"><h4>Dor aguda ≠ fadiga</h4><p>Desconforto muscular passa com aquecimento; dor articular ou pontual que piora, não. Na dúvida, pule e remarque — nunca force.</p></div>
     <div class="adj"><h4>Sábado é o dia-rei</h4><p>O bike longo / brick de sábado é a sessão mais específica do plano. Proteja-a: durma bem na sexta e não a sacrifique por treinos secundários.</p></div>
+  </div>
+</div>
+
+<!-- ═══ ANÁLISE ═══ -->
+<div class="page" id="p-analysis">
+  <div class="ph">📊 Análise de Treino — Leitura dos seus dados</div>
+  <p class="ps">Síntese das métricas reais do Garmin (carga, VO₂máx, HRV, prontidão, volume) em 25/jun/2026 · janela analisada: 01–25 jun.</p>
+
+  <div class="note" style="border-left-color:var(--green)">
+    <b>🧭 Veredito:</b> você está num momento <b>produtivo e sob controle</b> — fitness em alta, carga em faixa ótima (sem overtraining) e corrida forte. O bloco de meados de junho pesou (HRV caiu por ~2 semanas e já recuperou). Dois ajustes valem atenção: <b>excesso de alta intensidade</b> para uma prova aeróbica e <b>FC do ciclismo na rua corrompida</b> (leituras impossíveis). Detalhes abaixo.
+  </div>
+
+  <!-- KPIs -->
+  <div class="seg-grid" style="grid-template-columns:repeat(4,1fr)">
+    <div class="seg">
+      <div class="pbar" style="background:var(--green)"></div>
+      <span class="si">📈</span>
+      <div class="sd" style="color:var(--green);font-size:22px">Produtivo</div>
+      <div class="sn">Training Status</div>
+      <div class="sgoal">Fitness <b>+3</b> · construindo bem</div>
+    </div>
+    <div class="seg">
+      <div class="pbar" style="background:var(--blue)"></div>
+      <span class="si">🫁</span>
+      <div class="sd" style="color:var(--blue)">51</div>
+      <div class="sn">VO₂máx (corrida)</div>
+      <div class="sgoal">Estável↑ · bom p/ 70.3</div>
+    </div>
+    <div class="seg">
+      <div class="pbar" style="background:var(--green)"></div>
+      <span class="si">⚖️</span>
+      <div class="sd" style="color:var(--green)">0.8</div>
+      <div class="sn">Carga aguda:crônica</div>
+      <div class="sgoal"><b>Ótima</b> · sem excesso</div>
+    </div>
+    <div class="seg">
+      <div class="pbar" style="background:var(--accent)"></div>
+      <span class="si">🔋</span>
+      <div class="sd" style="color:var(--accent)">70</div>
+      <div class="sn">Prontidão hoje</div>
+      <div class="sgoal">Moderada · manhã 84</div>
+    </div>
+  </div>
+
+  <!-- VOLUME REAL -->
+  <div class="trail-chart">
+    <div class="trail-chart-title">⏱️ Volume Real de Treino por Semana (horas)</div>
+    <div class="trail-bars">
+      <div class="tbar-col"><div class="tbar-km">12.0h</div><div class="tbar go" style="--th:122px;background:linear-gradient(180deg,var(--blue),rgba(90,125,128,.2))"></div><div class="tbar-label">01–07<br>jun</div></div>
+      <div class="tbar-col"><div class="tbar-km">14.9h</div><div class="tbar go" style="--th:152px;background:linear-gradient(180deg,var(--blue),rgba(90,125,128,.2))"></div><div class="tbar-label">08–14<br>jun</div></div>
+      <div class="tbar-col"><div class="tbar-km">13.6h</div><div class="tbar go" style="--th:139px;background:linear-gradient(180deg,var(--blue),rgba(90,125,128,.2))"></div><div class="tbar-label">15–21<br>jun</div></div>
+      <div class="tbar-col"><div class="tbar-km" style="color:var(--muted)">~11h</div><div class="tbar go" style="--th:112px;background:linear-gradient(180deg,rgba(90,125,128,.5),rgba(90,125,128,.12))"></div><div class="tbar-label">22–28<br>jun*</div></div>
+    </div>
+    <div style="margin-top:16px;font-size:11px;color:var(--muted);text-align:center">*Semana em curso (Seg–Qui já somam ~7.3h). Seu volume real (12–15h) está <b>acima</b> do modelo de 9–11h da Periodização — boa base aeróbica.</div>
+  </div>
+
+  <!-- DISTRIBUIÇÃO + FITNESS -->
+  <div class="profile-grid">
+    <div class="info-box">
+      <h3>🧩 Onde vão suas horas (média/semana)</h3>
+      <div style="display:flex;align-items:center;gap:10px;margin:12px 0">
+        <span style="width:74px;font-size:12px;font-weight:700;color:var(--bike)">🚴 Bike</span>
+        <div style="flex:1;height:10px;background:rgba(32,32,29,.06);border-radius:2px;overflow:hidden"><div style="width:38%;height:100%;background:var(--bike)"></div></div>
+        <span style="width:78px;text-align:right;font-size:12px;color:var(--muted)">5.1h · 38%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin:12px 0">
+        <span style="width:74px;font-size:12px;font-weight:700;color:var(--run)">🏃 Corrida</span>
+        <div style="flex:1;height:10px;background:rgba(32,32,29,.06);border-radius:2px;overflow:hidden"><div style="width:29%;height:100%;background:var(--run)"></div></div>
+        <span style="width:78px;text-align:right;font-size:12px;color:var(--muted)">3.9h · 29%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin:12px 0">
+        <span style="width:74px;font-size:12px;font-weight:700;color:var(--swim)">🏊 Natação</span>
+        <div style="flex:1;height:10px;background:rgba(32,32,29,.06);border-radius:2px;overflow:hidden"><div style="width:18%;height:100%;background:var(--swim)"></div></div>
+        <span style="width:78px;text-align:right;font-size:12px;color:var(--muted)">2.5h · 18%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin:12px 0">
+        <span style="width:74px;font-size:12px;font-weight:700;color:var(--gym)">💪 Força</span>
+        <div style="flex:1;height:10px;background:rgba(32,32,29,.06);border-radius:2px;overflow:hidden"><div style="width:15%;height:100%;background:var(--gym)"></div></div>
+        <span style="width:78px;text-align:right;font-size:12px;color:var(--muted)">2.0h · 15%</span>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px">Distribuição coerente com 70.3 (bike é o maior segmento). Natação é a menor fatia — ok para o nível, mas é onde há mais a ganhar em técnica.</p>
+    </div>
+    <div class="info-box">
+      <h3>🎯 Marcadores de Fitness</h3>
+      <div class="stat-row"><span class="sl">VO₂máx (corrida)</span><span class="sv">51</span></div>
+      <div class="stat-row"><span class="sl">FTP (bike) · 06/jun</span><span class="sv">196 W</span></div>
+      <div class="stat-row"><span class="sl">Previsão 5 km</span><span class="sv">21:26</span></div>
+      <div class="stat-row"><span class="sl">Previsão 10 km</span><span class="sv">46:09</span></div>
+      <div class="stat-row"><span class="sl">Previsão 21 km</span><span class="sv">1:44:43</span></div>
+      <div class="stat-row"><span class="sl">FC repouso</span><span class="sv">47 bpm</span></div>
+    </div>
+  </div>
+
+  <!-- HRV / RECUPERAÇÃO -->
+  <div class="profile-grid">
+    <div class="info-box">
+      <h3>💓 HRV & Recuperação</h3>
+      <div class="stat-row"><span class="sl">HRV (média 7d)</span><span class="sv">49 ms · Balanceado</span></div>
+      <div class="stat-row"><span class="sl">Queda no bloco (09–21/jun)</span><span class="sv" style="color:var(--red)">52 → 45 ms</span></div>
+      <div class="stat-row"><span class="sl">Sono (histórico)</span><span class="sv">Muito bom</span></div>
+      <div class="stat-row"><span class="sl">Estresse diário</span><span class="sv">Calmo (19)</span></div>
+      <div class="stat-row"><span class="sl">Body Battery (hoje)</span><span class="sv">100 → 55</span></div>
+    </div>
+    <div class="info-box">
+      <h3>📐 Carga de Treino</h3>
+      <div class="stat-row"><span class="sl">Carga aguda (7d)</span><span class="sv">1432</span></div>
+      <div class="stat-row"><span class="sl">Carga crônica (42d)</span><span class="sv">1676</span></div>
+      <div class="stat-row"><span class="sl">Faixa ótima crônica</span><span class="sv">1340–2514</span></div>
+      <div class="stat-row"><span class="sl">Foco da carga</span><span class="sv" style="color:var(--accent)">Anaeróbico ↑ alvo</span></div>
+      <div class="stat-row"><span class="sl">ACWR</span><span class="sv" style="color:var(--green)">0.8 · Ótimo</span></div>
+    </div>
+  </div>
+
+  <!-- LEITURA -->
+  <div class="ph" style="font-size:17px;margin-top:8px">🔍 Minha leitura — pontos fortes & atenção</div>
+  <div class="adj-grid">
+    <div class="adj g"><h4>✅ Corrida é seu ponto forte</h4><p>VO₂máx 51 e meia prevista em <b>1:44</b>. Na prova você corre os 21 km já cansada do bike (~2:00–2:10), então há boa margem. O motor de corrida não é o gargalo.</p></div>
+    <div class="adj g"><h4>✅ Carga sob controle</h4><p>ACWR <b>0.8</b> (ótimo) e carga crônica no meio da faixa ideal. Você está construindo fitness sem entrar em zona de lesão/overtraining. Status: Produtivo.</p></div>
+    <div class="adj r"><h4>⚠️ O bloco de junho pesou</h4><p>HRV caiu de 52 para 45 ms entre 09–21/jun (status <b>Baixo</b>) e só agora voltou a 49. Foi a resposta às semanas de 14–15h. Lição: respeite as <b>semanas fáceis</b> — elas consolidam o ganho.</p></div>
+    <div class="adj b"><h4>⚠️ Intensidade alta demais</h4><p>Sua carga <b>anaeróbica está acima do alvo</b> (muito Z4/Z5: big gear, tiros). O 70.3 é aeróbico/limiar — garanta que os longos de bike e corrida fiquem mesmo em <b>Z2</b>, sem virar treino forte.</p></div>
+    <div class="adj r"><h4>🔧 FC do bike na rua está corrompida</h4><p>Pedaladas outdoor com <b>FC média 193–195 e máx 217–229</b> são fisicamente impossíveis — é interferência da cinta/sensor. <b>Não confie na FC do ciclismo</b>; paceie por potência. Vale trocar a pilha e reumedecer/reposicionar a cinta.</p></div>
+    <div class="adj"><h4>💪 Base aeróbica robusta</h4><p>Volume real de <b>12–15h/semana</b>, acima do modelo de 9–11h. Distribuição certa (bike &gt; corrida &gt; nado), com 2× força/sem. Boa fundação para o volume do pico.</p></div>
+  </div>
+
+  <div class="note" style="margin-top:8px">
+    <b>📌 Próximo marco:</b> o <b>teste de FTP de 30/jun</b> vai recalibrar suas zonas de potência. Me manda o número que eu atualizo o card de Ciclismo, a Estratégia e o W/kg (preciso do seu peso — o Garmin não tem balança conectada). Análise gerada a partir de: Training Status, VO₂máx, HRV, Prontidão, PMC de carga e 25 atividades reais.
   </div>
 </div>
 
