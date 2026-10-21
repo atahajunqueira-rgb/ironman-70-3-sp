@@ -1,0 +1,19 @@
+# Reels "Trilha realizada" — <clipe> <início_s> <duração_s>
+# Gancho: revelação do vale saindo do mato
+IMG_6849 9.0 2.4
+# Começo da trilha: campo, serra e nuvens
+IMG_6839 4.0 2.2
+# Ritmo: correndo na mata
+IMG_6875 0.2 1.6
+# Pés nas pedras e subida
+IMG_6849 1.6 2.0
+IMG_6849 5.4 2.0
+# Selfie sorrindo com a vista atrás
+IMG_6851 2.0 1.7
+# Subindo a crista
+IMG_6849 12.0 1.5
+# Cume: panorama da serra
+IMG_6852 1.0 3.0
+IMG_6852 8.0 2.2
+# Final: apontando a vista
+IMG_6842 11.6 3.0

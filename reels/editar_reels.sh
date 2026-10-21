@@ -12,6 +12,9 @@
 #   STAB=1          estabiliza cada corte com vid.stab (0 desliga)
 #   CUTS="IMG_6840=12.5 IMG_6847=3"  início manual (s) do corte de cada clipe;
 #                   sem isso, usa o trecho de maior movimento do clipe
+#   ROTEIRO=roteiro.txt  lista de cortes na ordem final, uma linha por corte:
+#                   "<clipe> <início_s> <duração_s>" (permite vários cortes do
+#                   mesmo clipe; ignora HOOK/FINAL/CUTS/SEG)
 set -euo pipefail
 
 IN_DIR=${1:?informe a pasta com os vídeos}
@@ -21,6 +24,7 @@ STAB=${STAB:-1}
 HOOK=${HOOK:-}
 FINAL=${FINAL:-}
 CUTS=${CUTS:-}
+ROTEIRO=${ROTEIRO:-}
 
 WORK=$(mktemp -d)
 trap 'rm -rf "$WORK"' EXIT
@@ -38,6 +42,20 @@ for c in "${CLIPS[@]}"; do
   ordered+=("$c")
 done
 for c in "${CLIPS[@]}"; do [ -n "$FINAL" ] && [[ $(basename "$c") == "$FINAL"* ]] && ordered+=("$c"); done
+
+# Com roteiro, a ordem e os trechos vêm do arquivo (o nome casa em qualquer
+# parte do arquivo, ex.: "IMG_6849" casa com "2fd1d352-IMG_6849.mov").
+r_start=(); r_len=()
+if [ -n "$ROTEIRO" ]; then
+  ordered=()
+  while read -r clip st ln; do
+    [[ -z $clip || $clip == \#* ]] && continue
+    match=""
+    for c in "${CLIPS[@]}"; do [[ $(basename "$c") == *"$clip"* ]] && { match=$c; break; }; done
+    [ -n "$match" ] || { echo "clipe não encontrado: $clip"; exit 1; }
+    ordered+=("$match"); r_start+=("$st"); r_len+=("$ln")
+  done < "$ROTEIRO"
+fi
 
 manual_cut() {
   local name=$1 kv
@@ -73,15 +91,19 @@ for f in "${ordered[@]}"; do
   i=$((i + 1))
   name=$(basename "$f")
   dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
-  trc=$(ffprobe -v error -select_streams v:0 -show_entries stream=color_transfer -of csv=p=0 "$f")
+  trc=$(ffprobe -v error -select_streams v:0 -show_entries stream=color_transfer -of default=nw=1:nk=1 "$f" | head -n1)
 
-  start=$(manual_cut "$name")
-  [ -n "$start" ] || start=$(best_start "$f" "$dur")
+  if [ -n "$ROTEIRO" ]; then
+    start=${r_start[i-1]}; len=${r_len[i-1]}
+  else
+    start=$(manual_cut "$name")
+    [ -n "$start" ] || start=$(best_start "$f" "$dur")
 
-  # Primeiro corte e último ficam um pouco mais longos (gancho e respiro final).
-  len=$SEG
-  [ $i -eq 1 ] && len=$(awk -v s="$SEG" 'BEGIN{print s + 0.6}')
-  [ $i -eq ${#ordered[@]} ] && len=$(awk -v s="$SEG" 'BEGIN{print s + 1.0}')
+    # Primeiro corte e último ficam um pouco mais longos (gancho e respiro final).
+    len=$SEG
+    [ $i -eq 1 ] && len=$(awk -v s="$SEG" 'BEGIN{print s + 0.6}')
+    [ $i -eq ${#ordered[@]} ] && len=$(awk -v s="$SEG" 'BEGIN{print s + 1.0}')
+  fi
 
   # HDR (HLG/PQ do iPhone) -> SDR Rec.709; sem isso o vídeo fica lavado no Instagram.
   tm=""
