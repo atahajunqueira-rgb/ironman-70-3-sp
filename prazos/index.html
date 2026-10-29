@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prazos & Áreas da Vida | Amanda Junqueira</title>
+<title>Prazos & Áreas da Vida</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* ════════════════════════════════════════════════════════════
    Editorial / Arquitetura — mesma linguagem do plano 70.3 SP
@@ -12,9 +13,17 @@
   --bg:#efece6; --surface:#f5f2ec; --card:#fbf9f5; --line:#d9d3c7;
   --ink:#20201d; --muted:#77736b; --accent:#9c6b3f;
   --green:#6f7d5a; --red:#9e4f42; --blue:#5a7d80;
+  --tint:var(--tint); --scrim:rgba(32,32,29,.35); --hover:#ffffff; --navbg:rgba(245,242,236,.94); --oncheck:#ffffff;
   --serif:Georgia,'Times New Roman',Times,serif;
   --sans:-apple-system,BlinkMacSystemFont,'Helvetica Neue','Segoe UI',Arial,sans-serif;
 }
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1c1b18; --surface:#23221e; --card:#2a2824; --line:#3d3a34; --ink:#ece7dd; --muted:#a39d91; --accent:#c99466;
+  --green:#97a67f; --red:#cf7f70; --blue:#8fb0b3; --tint:rgba(236,231,221,.05); --scrim:rgba(0,0,0,.55); --hover:#312f2a; --navbg:rgba(35,34,30,.94); --oncheck:#1c1b18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1c1b18; --surface:#23221e; --card:#2a2824; --line:#3d3a34; --ink:#ece7dd; --muted:#a39d91; --accent:#c99466;
+  --green:#97a67f; --red:#cf7f70; --blue:#8fb0b3; --tint:rgba(236,231,221,.05); --scrim:rgba(0,0,0,.55); --hover:#312f2a; --navbg:rgba(35,34,30,.94); --oncheck:#1c1b18; color-scheme:dark}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
@@ -22,7 +31,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 
 /* HERO */
-.hero{background:var(--surface);border-bottom:1px solid var(--line);padding:72px 20px 0;text-align:center}
+.hero{background:var(--surface);border-bottom:1px solid var(--line);padding-block:72px 0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));text-align:center}
 .badge{display:inline-block;border:1px solid var(--ink);color:var(--ink);font-weight:600;letter-spacing:.28em;font-size:10px;padding:7px 16px;text-transform:uppercase;margin-bottom:20px}
 .hero h1{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;font-size:clamp(38px,8vw,72px);line-height:1.02;margin-bottom:16px}
 .hero h1 em{color:var(--accent);font-style:italic}
@@ -30,12 +39,12 @@ button{cursor:pointer}
 .stats{display:flex;flex-wrap:wrap;max-width:900px;margin:0 auto;border-top:1px solid var(--line)}
 .stat{flex:1;min-width:110px;padding:20px 10px;border-right:1px solid var(--line);text-align:center;background:none;border-top:none;border-bottom:none;border-left:none}
 .stat:last-child{border-right:none}
-.stat:hover{background:rgba(32,32,29,.03)}
+.stat:hover{background:var(--tint)}
 .stat .v{font-family:var(--serif);font-size:30px;display:block;line-height:1}
 .stat .l{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;margin-top:6px;display:block}
 
 /* NAV */
-.nav{position:sticky;top:0;z-index:50;background:rgba(245,242,236,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;overflow-x:auto;scrollbar-width:none}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navbg);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
 .nav button{flex-shrink:0;padding:16px 18px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;white-space:nowrap}
 .nav button:hover{color:var(--ink)}
@@ -43,7 +52,7 @@ button{cursor:pointer}
 .nav .add{margin-left:auto;color:var(--accent)}
 
 /* LAYOUT */
-.page{display:none;max-width:1160px;margin:0 auto;padding:36px 16px 80px}
+.page{display:none;max-width:1160px;margin:0 auto;padding-block:36px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .page.a{display:block}
 .ph{font-family:var(--serif);font-weight:400;font-size:28px;letter-spacing:-.01em;margin-bottom:4px}
 .ps{color:var(--muted);font-size:13px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--line)}
@@ -77,9 +86,9 @@ button{cursor:pointer}
 /* TASK ROWS */
 .list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .task{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:start;padding:12px 4px;border-bottom:1px solid var(--line);background:transparent}
-.task:hover{background:rgba(32,32,29,.025)}
+.task:hover{background:var(--tint)}
 .check{width:20px;height:20px;border:1px solid var(--ink);border-radius:50%;background:transparent;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:11px}
-.task.done .check{background:var(--green);border-color:var(--green);color:#fff}
+.task.done .check{background:var(--green);border-color:var(--green);color:var(--oncheck)}
 .task.done .tt{text-decoration:line-through;color:var(--muted)}
 .tt{font-weight:600;font-size:14px;cursor:pointer}
 .tm{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11px;color:var(--muted);margin-top:2px;align-items:center}
@@ -105,15 +114,15 @@ button{cursor:pointer}
 .btn.solid:hover{background:var(--accent);border-color:var(--accent)}
 .btn.ghost{border-color:var(--line)}
 .btn.danger{border-color:var(--red);color:var(--red)}
-.btn.danger:hover{background:var(--red);color:#fff}
+.btn.danger:hover{background:var(--red);color:var(--bg)}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);border-left:1px solid var(--line);border-top:1px solid var(--line)}
 .cal .wd{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
 .cday{min-height:96px;padding:6px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card);cursor:pointer;overflow:hidden}
-.cday:hover{background:#fff}
+.cday:hover{background:var(--hover)}
 .cday.out{background:transparent;color:var(--muted)}
 .cday.today{box-shadow:inset 0 0 0 2px var(--ink)}
 .cday .dn{font-family:var(--serif);font-size:14px}
-.cday .ev{font-size:10px;line-height:1.3;margin-top:3px;padding:2px 4px;border-left:2px solid;background:rgba(32,32,29,.04);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cday .ev{font-size:10px;line-height:1.3;margin-top:3px;padding:2px 4px;border-left:2px solid;background:var(--tint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cday .ev.done{opacity:.45;text-decoration:line-through}
 .cday .more{font-size:10px;color:var(--muted);margin-top:2px}
 @media(max-width:640px){
@@ -133,7 +142,7 @@ button{cursor:pointer}
 .note b{color:var(--ink)}
 
 /* MODAL */
-.modal{position:fixed;inset:0;background:rgba(32,32,29,.35);display:none;align-items:flex-start;justify-content:center;z-index:100;padding:6vh 16px;overflow-y:auto}
+.modal{position:fixed;inset:0;background:var(--scrim);display:none;align-items:flex-start;justify-content:center;z-index:100;padding:6vh 16px;overflow-y:auto}
 .modal.a{display:flex}
 .mbox{background:var(--card);border:1px solid var(--ink);width:100%;max-width:520px;padding:26px}
 .mbox h2{font-family:var(--serif);font-weight:400;font-size:24px;margin-bottom:18px}
@@ -145,6 +154,11 @@ button{cursor:pointer}
 .mact{display:flex;gap:8px;margin-top:20px}
 .mact .sp{flex:1}
 
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.task>div{min-width:0}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;font-size:13px;border-radius:2px;z-index:200;max-width:calc(100% - 32px)}
+.sync{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 footer{border-top:1px solid var(--line);text-align:center;padding:28px 16px;font-size:11px;color:var(--muted);letter-spacing:.04em}
 </style>
 </head>
@@ -220,7 +234,7 @@ footer{border-top:1px solid var(--line);text-align:center;padding:28px 16px;font
     <button class="btn ghost" onclick="document.getElementById('imp').click()">Importar</button>
     <input type="file" id="imp" accept="application/json" hidden onchange="importData(this)">
   </div>
-  <div class="note"><b>Onde ficam os dados?</b> Tudo é guardado neste navegador (localStorage). Para usar no celular e no computador, exporte o backup num e importe no outro. Faça um backup de vez em quando.</div>
+  <div class="note" id="storeNote"></div>
 </section>
 </main>
 
@@ -249,7 +263,18 @@ footer{border-top:1px solid var(--line);text-align:center;padding:28px 16px;font
   </form>
 </div>
 
-<footer>Prazos & Áreas da Vida · dados guardados localmente neste navegador</footer>
+<div class="modal" id="askModal">
+  <div class="mbox" role="dialog" aria-modal="true">
+    <h2 id="askMsg">Tem certeza?</h2>
+    <div class="mact"><span class="sp"></span>
+      <button type="button" class="btn ghost" id="askNo">Cancelar</button>
+      <button type="button" class="btn danger" id="askYes">Confirmar</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<footer id="foot">Prazos & Áreas da Vida</footer>
 
 <script>
 const KEY = 'prazos-areas-v1';
@@ -264,14 +289,58 @@ const DEFAULT_AREAS = [
   {id:'pessoal',  name:'Pessoal',   emoji:'✨', color:'#4f5d6e'},
 ];
 
-let db = load();
+let db = loadLocal(), remote = null, saving = Promise.resolve();
 let filterArea = 'all', calArea = 'all', calRef = startOfMonth(new Date()), selDay = null, editing = null;
 
-function load(){
+function loadLocal(){
   try{ const d = JSON.parse(localStorage.getItem(KEY)); if(d && d.areas) return d; }catch(e){}
   return {areas: DEFAULT_AREAS.map(a=>({...a})), tasks: []};
 }
-function save(){ try{ localStorage.setItem(KEY, JSON.stringify(db)); }catch(e){} render(); }
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(db)); }catch(e){}
+  if(remote){
+    const body = JSON.parse(JSON.stringify({areas: db.areas, tasks: db.tasks}));
+    saving = saving.then(() => remote.set(body)).catch(() => toast('Não foi possível guardar na nuvem. Tente de novo.'));
+  }
+  render();
+}
+/* Sincroniza com a sua conta Claude: os dados seguem você no celular e no computador. */
+async function connect(){
+  const cdb = await window.claude?.use?.('db');
+  const user = cdb && await window.claude.use('user');
+  const id = user && await user.id();
+  if(!id){ setStoreNote(false); return; }
+  remote = cdb.doc(`data/users/${id}/state`);
+  let first = true;
+  remote.onSnapshot(snap => {
+    if(snap.exists){
+      const d = snap.data();
+      if(d && Array.isArray(d.areas) && Array.isArray(d.tasks)){ db = JSON.parse(JSON.stringify(d)); render(); }
+    } else if(first){ save(); }
+    first = false;
+  }, () => setStoreNote(false));
+  setStoreNote(true);
+}
+function setStoreNote(cloud){
+  document.getElementById('storeNote').innerHTML = cloud
+    ? '<b>Onde ficam os dados?</b> Na sua conta Claude, de forma privada: só você vê. Abra este mesmo link no celular ou no computador e os prazos aparecem iguais. Exporte um backup de vez em quando.'
+    : '<b>Onde ficam os dados?</b> Neste navegador. Para usar noutro aparelho, exporte o backup aqui e importe lá.';
+  document.getElementById('foot').textContent = 'Prazos & Áreas da Vida · ' + (cloud ? 'sincronizado com a sua conta' : 'guardado neste navegador');
+}
+let toastT;
+function toast(msg){ const t = document.getElementById('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => t.hidden = true, 3200); }
+function ask(msg, yes = 'Confirmar'){
+  return new Promise(res => {
+    const m = document.getElementById('askModal');
+    document.getElementById('askMsg').textContent = msg;
+    document.getElementById('askYes').textContent = yes;
+    m.classList.add('a');
+    const done = v => { m.classList.remove('a'); res(v); };
+    document.getElementById('askYes').onclick = () => done(true);
+    document.getElementById('askNo').onclick = () => done(false);
+    m.onclick = e => { if(e.target === m) done(false); };
+  });
+}
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -488,33 +557,40 @@ function saveTask(e){
   else db.tasks.push({id: uid(), done:false, created: new Date().toISOString(), ...data});
   closeTask(); save();
 }
-function deleteTask(){
-  if(!editing || !confirm('Excluir este prazo?')) return;
-  db.tasks = db.tasks.filter(t => t !== editing); closeTask(); save();
+async function deleteTask(){
+  const t = editing; if(!t) return;
+  closeTask();
+  if(!await ask(`Excluir "${t.title}"?`, 'Excluir')) return;
+  db.tasks = db.tasks.filter(x => x.id !== t.id); save(); toast('Prazo excluído.');
 }
 document.addEventListener('keydown', e => {
-  if(e.key === 'Escape') closeTask();
+  if(e.key === 'Escape'){ closeTask(); document.getElementById('askNo').click(); }
   if(e.key === 'n' && !e.target.closest('input,textarea,select') && !document.getElementById('modal').classList.contains('a')){ e.preventDefault(); openTask(); }
 });
 
 function addArea(){
-  const name = prompt('Nome da nova área:'); if(!name) return;
-  db.areas.push({id: uid(), name: name.trim(), emoji:'•', color:'#77736b'}); save();
+  db.areas.push({id: uid(), name: 'Nova área', emoji:'📌', color:'#77736b'}); save();
+  const rows = document.querySelectorAll('#areaEditor .arow input[type=text]:not(.emo)');
+  const last = rows[rows.length - 1]; if(last){ last.focus(); last.select(); }
 }
 function editArea(id, k, v){ const a = db.areas.find(x => x.id === id); if(a){ a[k] = v.trim() || a[k]; document.activeElement.blur(); save(); } }
-function removeArea(id){
+async function removeArea(id){
   const n = db.tasks.filter(t => t.area === id).length;
-  if(db.areas.length <= 1) return alert('Mantenha pelo menos uma área.');
-  if(!confirm(n ? `Esta área tem ${n} prazo(s). Eles serão movidos para "${area(db.areas.find(a=>a.id!==id).id).name}". Continuar?` : 'Remover esta área?')) return;
+  if(db.areas.length <= 1) return toast('Mantenha pelo menos uma área.');
+  const dest = db.areas.find(a => a.id !== id);
+  if(!await ask(n ? `Remover "${area(id).name}"? Os ${n} prazo(s) dela vão para "${dest.name}".` : `Remover "${area(id).name}"?`, 'Remover')) return;
   db.areas = db.areas.filter(a => a.id !== id);
   db.tasks.forEach(t => { if(t.area === id) t.area = db.areas[0].id; });
   if(filterArea === id) filterArea = 'all'; if(calArea === id) calArea = 'all';
   save();
 }
 
-function exportData(){
-  const blob = new Blob([JSON.stringify(db, null, 2)], {type:'application/json'});
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `prazos-backup-${todayISO()}.json`; a.click();
+async function exportData(){
+  const filename = `prazos-backup-${todayISO()}.json`, data = JSON.stringify(db, null, 2);
+  const dl = await window.claude?.use?.('downloads');
+  if(dl){ try{ await dl.save({filename, data}); }catch(e){ toast('Backup não foi salvo.'); } return; }
+  const blob = new Blob([data], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 function importData(input){
@@ -522,11 +598,14 @@ function importData(input){
   file.text().then(txt => {
     const d = JSON.parse(txt);
     if(!d.areas || !Array.isArray(d.tasks)) throw new Error();
-    if(confirm(`Importar ${d.tasks.length} prazos e ${d.areas.length} áreas? Isto substitui os dados atuais.`)){ db = d; save(); }
-  }).catch(() => alert('Arquivo inválido.')).finally(() => input.value = '');
+    return ask(`Importar ${d.tasks.length} prazos e ${d.areas.length} áreas? Isto substitui os dados atuais.`, 'Importar')
+      .then(ok => { if(ok){ db = {areas: d.areas, tasks: d.tasks}; save(); toast('Backup importado.'); } });
+  }).catch(() => toast('Este arquivo não é um backup válido.')).finally(() => input.value = '');
 }
 
+setStoreNote(false);
 render();
+connect();
 </script>
 </body>
 </html>
